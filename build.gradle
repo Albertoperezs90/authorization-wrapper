@@ -11,6 +11,8 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:3.4.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.4.1'
+        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -20,10 +22,38 @@ allprojects {
     repositories {
         google()
         jcenter()
+    }
 
+    tasks.withType(Javadoc) {
+        options.addStringOption('Xdoclint:none', '-quiet')
+        options.addStringOption('encoding', 'UTF-8')
     }
 }
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+}
+
+ext {
+    bintrayRepo = 'AuthorizationWrapper'
+    bintrayName = 'authorization-wrapper'
+
+    publishedGroupId = 'com.aperezsi.authorization-wrapper'
+    artifact = 'authorization'
+    libraryVersion = '0.1'
+    libraryName = 'AuthorizationWrapper'
+
+    libraryDescription = 'This library helps you validate credentials and return tokens for multiple ERP platforms'
+
+    siteUrl = 'https://github.com/Albertoperezs90/authorization-wrapper'
+    gitUrl = 'https://github.com/Albertoperezs90/authorization-wrapper.git'
+
+
+    developerId = 'aperezs90'
+    developerName = 'Alberto Pérez'
+    developerEmail = 'aperezsimon90@gmail.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
 }
