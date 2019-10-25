@@ -1,0 +1,50 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
+
+
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.core:core-ktx:1.1.0'
+
+    implementation project(":manager")
+
+    implementation 'com.okta.android:oidc-androidx:1.0.2'
+    implementation 'com.fasterxml.jackson.core:jackson-annotations:2.9.8'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.9.8'
+    implementation 'org.slf4j:slf4j-api:1.7.25'
+    implementation 'org.slf4j:slf4j-simple:1.7.25'
+    implementation 'com.squareup.okhttp3:okhttp:3.11.0'
+    implementation files('libs/java8_libs.jar')
+    implementation files('libs/okta-authn-sdk-api-1.0.0-android.jar')
+    implementation files('libs/okta-authn-sdk-impl-1.0.0-android.jar')
+    implementation files('libs/okta-commons-lang-1.1.1-android.jar')
+    implementation files('libs/okta-config-check-1.1.1-android.jar')
+    implementation files('libs/okta-http-api-1.2.0-android.jar')
+    implementation files('libs/okta-sdk-api-1.5.2-android.jar')
+    implementation files('libs/okta-sdk-impl-1.5.2-android.jar')
+    implementation files('libs/okta-sdk-okhttp-1.5.2-android.jar')
+}
