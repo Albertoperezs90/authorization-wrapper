@@ -110,7 +110,7 @@ bintray {
         licenses = rootProject.ext.allLicenses
         dryRun = false
         publish = true
-        override = false
+        override = true
         publicDownloadNumbers = true
         version {
             desc = rootProject.ext.libraryDescription

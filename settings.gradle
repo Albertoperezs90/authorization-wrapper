@@ -1,1 +1,1 @@
-include ':app', ':manager', ':okta-android', ':auth_manager'
+include ':app', ':manager', ':okta-android', ':authorization'
